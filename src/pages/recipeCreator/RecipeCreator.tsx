@@ -116,7 +116,7 @@ const RecipeCreator: React.FunctionComponent<IRecipeCreatorProps> = (props) => {
               </div>
               <div className="ingredient__content-body">
                 {ingredients.map((ingredient) => (
-                  <div className="ingredient__item">
+                  <div key={ingredient.id} className="ingredient__item">
                     <div className="drag__icon">
                       <HiOutlineBars4 />
                     </div>
@@ -155,7 +155,7 @@ const RecipeCreator: React.FunctionComponent<IRecipeCreatorProps> = (props) => {
               </div>
               <div className="steps__content-body">
                 {procedure.map((step, index: number) => (
-                  <div className="steps__item">
+                  <div key={step.id} className="steps__item">
                     <div className="drag__icon">
                       <div className="counter__container">
                         <span>{index + 1}</span>

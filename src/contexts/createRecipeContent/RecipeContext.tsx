@@ -15,7 +15,8 @@ const RecipeProvider = ({ children }) => {
       name: "",
     };
 
-    setIngredients((prev) => [...prev, newIngredient]);
+    setIngredients([...ingredients, newIngredient]);
+    // setIngredients((prev) => [...prev, newIngredient]);
     console.log(ingredients);
     console.log("Ingredient added!");
   };

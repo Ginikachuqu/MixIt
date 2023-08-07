@@ -199,6 +199,7 @@ export const Ingredient = styled.section`
             background: var(--color-gray);
             padding: 0.65rem;
             border-radius: 0.25rem;
+            outline: none;
 
             &:empty:before {
               content: attr(data-placeholder);
