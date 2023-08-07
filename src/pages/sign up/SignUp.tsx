@@ -43,9 +43,7 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
     setLoading(true)
     try {
       const auth = getAuth()
-
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-
       const user = userCredential.user
 
       console.log(user)
