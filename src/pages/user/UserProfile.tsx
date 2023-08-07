@@ -3,10 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Styles
-import { Wrapper, LeftSidebar, RightSidebar } from "./UserProfile.styles";
+import { Wrapper, TopSection, BottomSection } from "./UserProfile.styles";
 
 // Icons
-import { AiFillFacebook, AiFillTwitterCircle } from "react-icons/ai";
+// import { AiFillTwitterCircle } from "react-icons/ai";
+import { FaPen, FaFacebook, } from "react-icons/fa";
+import { GrInstagram, GrLocation, GrTwitter } from "react-icons/gr";
 
 // Components
 import { recipes } from "../../Recipe";
@@ -20,8 +22,8 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
   return (
     <Wrapper>
       <div className="wrapper__inner">
-        <LeftSidebar>
-          <div className="left__sidebar-inner">
+        <TopSection>
+          <div className="top__section-inner">
             <div className="user">
               <div className="user__avatar">
                 <img
@@ -33,14 +35,14 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
                 <div className="user__name">
                   <h3>Blaise Johnson</h3>
                   <div className="followers__count">
-                    <span className="followers">
+                    <Link className="followers">
                       <span>3.5k</span>
                       <span>Followers</span>
-                    </span>
-                    <span className="following">
+                    </Link>
+                    <Link className="following">
                       <span>45</span>
                       <span>Following</span>
-                    </span>
+                    </Link>
                   </div>
                 </div>
                 <div className="user__bio">
@@ -53,22 +55,34 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
                     tenetur saepe aut sit?
                   </p>
                 </div>
-                <div className="user__location">
-                  <span>Abuja, Nigeria</span>
-                </div>
-                <div className="user__socials">
-                  <Link to={{ pathname: "/" }}>
-                    <AiFillFacebook />
-                  </Link>
-                  <Link to={{ pathname: "/" }}>
-                    <AiFillTwitterCircle />
-                  </Link>
+                <div className="user__deet">
+                  <div className="user__location">
+                    <GrLocation />
+                    <span>Abuja, Nigeria</span>
+                  </div>
+                  <div className="user__socials">
+                    <Link to={{ pathname: "/" }}>
+                      <FaFacebook />
+                    </Link>
+                    <Link to={{ pathname: "/" }}>
+                      <GrTwitter />
+                    </Link>
+                    <Link to={{ pathname: "/" }}>
+                      <GrInstagram />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
+            <div className="edit__tools">
+              <Link to={{ pathname: "/" }}>
+                <FaPen />
+                <span>Edit Profile</span>
+              </Link>
+            </div>
           </div>
-        </LeftSidebar>
-        <RightSidebar>
+        </TopSection>
+        <BottomSection>
           <div className="picker__slider">
             <div className="picker__slider-links">
               <Link to={{ pathname: "/" }} className="active">
@@ -87,7 +101,7 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
                 ))
               : "Nothing Here"}
           </div>
-        </RightSidebar>
+        </BottomSection>
       </div>
     </Wrapper>
   );

@@ -101,7 +101,7 @@ export const Wrapper = styled.section`
                   align-items: center;
                   justify-content: center;
 
-                  span {
+                  & > span {
                     display: flex;
                     align-items: center;
                     gap: .5rem;

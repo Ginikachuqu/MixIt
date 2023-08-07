@@ -1,35 +1,45 @@
 import { styled } from "styled-components";
 
 export const Wrapper = styled.a`
-    /* padding: .25rem; */
-    height: 190px;
-    max-width: 200px;
-    border-radius: .45rem;
-    pointer-events: none;
+  display: inline-block;
+  height: 100%;
+  max-width: 100%;
+  border-radius: 0.45rem;
+  position: relative;
+  
+  .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, .35);
+      border-radius: 0.45rem;
+  }
 
-    .wrapper__inner {
-        display: flex;
-        margin-top: 7rem;
+  .wrapper__inner {
+    display: flex;
+    /* margin-top: 7rem; */
+    position: relative;
 
-        .recipe__details {
-            position: relative;
+    .recipe__details {
+      position: relative;
+      margin: 7.5rem 0 0;
 
-            
-            span {
-                display: inline-block;
-                font-size: .85rem;
+      span {
+        display: inline-block;
+        font-size: 0.85rem;
 
-                a {
-                    text-decoration: none;
-                    color: var(--color-gray);
-                    cursor: pointer;
+        a {
+          text-decoration: none;
+          color: var(--color-gray);
+          cursor: pointer;
 
-                    &:hover {
-                        text-decoration: underline;
-                    }
-                }
-            }
+          &:hover {
+            text-decoration: underline;
+          }
         }
+      }
     }
-    
-`
+  }
+`;

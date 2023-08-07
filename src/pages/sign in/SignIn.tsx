@@ -9,7 +9,7 @@ import Loader from "../../components/loader/Loader";
 // styles
 import { Wrapper } from "./SignIn.styles";
 // icons
-import { AiOutlineEnter } from "react-icons/ai";
+import { FaDoorOpen } from "react-icons/fa";
 
 interface IAppProps {}
 
@@ -59,7 +59,7 @@ const SignIn: React.FunctionComponent<IAppProps> = (props) => {
                   {loading === false ? (
                     <div>
                       <span>
-                        <span>Login </span> <AiOutlineEnter />
+                        <span>Login </span> <FaDoorOpen />
                       </span>
                     </div>
                   ) : (

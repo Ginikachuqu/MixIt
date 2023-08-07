@@ -34,15 +34,17 @@ export const recipes = [
     collectionCount: 40,
     likeCount: 23,
   },
-  // {
-  //     image: './assets/images/pexels-mo-eid-11798029.jpg',
-  //     name: 'Flavoured Yogurt',
-  //     authorName: 'Fanice',
-  //     collectionCount: 400,
-  //     likeCount: 23
-  // },
   {
     id: 5,
+    image:
+      "../../../public/images/foodiesfeed.com_cinematic-shot-of-grilling-beef-steak.jpg",
+    name: "Baked Beans and Potatoes",
+    authorName: "Stephanie",
+    collectionCount: 100,
+    likeCount: 40,
+  },
+  {
+    id: 6,
     image:
       "../../../public/images/foodiesfeed.com_cinematic-shot-of-grilling-beef-steak.jpg",
     name: "Baked Beans and Potatoes",

@@ -12,26 +12,36 @@ import { Wrapper } from "./DisplayCard.styles";
 
 const DisplayCard: React.FunctionComponent<IAppProps> = ({ recipe }) => {
   return (
-    <Wrapper
+    <Link
+      to={{ pathname: "/" }}
       style={{
-        backgroundImage: `url(${recipe.image})`,
-        backgroundSize: "cover",
-        backgroundPosition: 'center',
-        backgroundRepeat: "no-repeat",
+        height: '190px',
+        maxWidth: '200px',
+        borderRadius: '.045rem',
       }}
     >
-      <div className="wrapper__inner">
-        <div className="recipe__details">
+      <Wrapper
+        style={{
+          backgroundImage: `url(${recipe.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="overlay"></div>
+        <div className="wrapper__inner">
+          <div className="recipe__details">
             <span className="recipe__name">
-                <Link to={{pathname: '/'}}>{recipe.name}</Link>
+              <Link to={{ pathname: "/" }}>{recipe.name}</Link>
             </span>
             <span className="author__name">
-                <Link to={{pathname: '/'}}>{recipe.authorName}</Link>
+              <Link to={{ pathname: "/" }}>{recipe.authorName}</Link>
             </span>
+          </div>
+          <div className="stats"></div>
         </div>
-        <div className="stats"></div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </Link>
   );
 };
 
