@@ -76,7 +76,7 @@ export const Links = styled.nav`
         display: inline-block;
         margin-right: 0.65rem;
         a {
-          font-size: 1.45rem;
+          font-size: 1.25rem;
           color: var(--seal-brown);
           transition: color 0.3s ease-in-out;
 

@@ -52,6 +52,24 @@ export const recipes = [
     collectionCount: 100,
     likeCount: 40,
   },
+  {
+    id: 7,
+    image:
+      "../../../public/images/foodiesfeed.com_cinematic-shot-of-grilling-beef-steak.jpg",
+    name: "Baked Beans and Potatoes",
+    authorName: "Stephanie",
+    collectionCount: 100,
+    likeCount: 40,
+  },
+  {
+    id: 8,
+    image:
+      "../../../public/images/foodiesfeed.com_cinematic-shot-of-grilling-beef-steak.jpg",
+    name: "Baked Beans and Potatoes",
+    authorName: "Stephanie",
+    collectionCount: 100,
+    likeCount: 40,
+  },
 ];
 
 export const recommendedRecipes = [

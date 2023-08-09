@@ -33,10 +33,10 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
               </div>
               <div className="user__info">
                 <div className="user__name">
-                  <h3>Blaise Johnson</h3>
+                  <h3>Charles Grandison</h3>
                   <div className="followers__count">
                     <Link className="followers">
-                      <span>3.5k</span>
+                      <span>3.5M</span>
                       <span>Followers</span>
                     </Link>
                     <Link className="following">

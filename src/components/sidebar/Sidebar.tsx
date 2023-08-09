@@ -17,6 +17,7 @@ import {
 // Styles
 import { Wrapper, Links } from "./Sidebar.styles";
 import { SidebarContext } from "../../contexts/sidebarcontext/SidebarContext";
+import { FaFacebook } from "react-icons/fa";
 
 const Sidebar: React.FunctionComponent<IAppProps> = (props) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
@@ -40,10 +41,13 @@ const Sidebar: React.FunctionComponent<IAppProps> = (props) => {
             <Link to="/">Recipes & Menus</Link>
           </li>
           <li>
-            <Link to="/">Ingredients</Link>
+            <Link to="/">Join the Community</Link>
           </li>
           <li>
-            <Link to="/">Join Our Community</Link>
+            <Link to="/">FAQs</Link>
+          </li>
+          <li>
+            <Link to="/">About Us</Link>
           </li>
         </ul>
         <div className="media__links">
@@ -53,7 +57,7 @@ const Sidebar: React.FunctionComponent<IAppProps> = (props) => {
           <div className="links">
             <span className="link__fb">
               <Link to="#">
-                <GrFacebook />
+                <FaFacebook />
               </Link>
             </span>
             <span className="link__tw">

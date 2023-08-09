@@ -29,6 +29,7 @@ export const Wrapper = styled.a`
       span {
         display: inline-block;
         font-size: 0.85rem;
+        font-weight: bold;
 
         a {
           text-decoration: none;

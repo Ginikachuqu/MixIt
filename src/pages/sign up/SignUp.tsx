@@ -56,9 +56,11 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
       delete formDataCopy.password
       formDataCopy.timestamp = serverTimestamp()
 
-      await setDoc(doc(db, 'users', user.id), formDataCopy)
-
+      console.log('User not sent to database yet.')
+      // await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      console.log('user sent to database')
       setLoading(false)
+      console.log('Loader set to false successfully!')
       navigate('/')
     } catch (error) {
       console.log(error)
@@ -81,7 +83,7 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
             </h2>
           </div>
           <div className="content__right-body">
-            <form>
+            <form onSubmit={onSubmit}>
               <div className="username">
                 <span>Name</span>
                 <input
@@ -117,7 +119,7 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
                 />
               </div>
               <div className="submit">
-                <button disabled={loading} onClick={onSubmit}>
+                <button disabled={loading}>
                   {loading === false ? (
                     <div>
                       <span><span>Create Account</span> <AiOutlinePlus /></span>
