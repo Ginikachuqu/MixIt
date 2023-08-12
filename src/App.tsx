@@ -13,25 +13,25 @@ import RecipeCreator from "./pages/recipeCreator/RecipeCreator";
 import NavBar from "./components/navbar/NavBar";
 
 // Context
-// import AuthProvider from "./contexts/authcontext/AuthContext";
+import AuthProvider from "./contexts/authcontext/AuthContext";
 import RecipeProvider from "./contexts/createRecipeContent/RecipeContext";
 
 function App() {
   return (
     // <AuthProvider>
-    <RecipeProvider>
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/profile" element={<UserProfile />} />
-          <Route path="/create-recipe" element={<RecipeCreator />} />
-        </Routes>
-        <GlobalStyle />
-      </Router>
-    </RecipeProvider>
+      <RecipeProvider>
+        <Router>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/create-recipe" element={<RecipeCreator />} />
+          </Routes>
+          <GlobalStyle />
+        </Router>
+      </RecipeProvider>
     // </AuthProvider>
   );
 }

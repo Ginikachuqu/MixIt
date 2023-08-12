@@ -1,9 +1,10 @@
 // Essentials
 import { useState, useContext, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { setDoc, doc, serverTimestamp } from 'firebase/firestore'
-import { db } from '../../../firebase.config'
+import { auth } from "../../../firebase.config";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { setDoc, doc, serverTimestamp } from "firebase/firestore";
+import { db } from "../../../firebase.config";
 
 // Styles
 import { Wrapper } from "./SignUp.styles";
@@ -18,57 +19,56 @@ import { AiOutlinePlus } from "react-icons/ai";
 interface IAppProps {}
 
 const SignUp: React.FunctionComponent<IAppProps> = (props) => {
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: ''
-  })
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
-  const { name, email, password } = formData
+  const { name, email, password } = formData;
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.id]: e.target.value
-    }))
-  }
+      [e.target.id]: e.target.value,
+    }));
+  };
 
-  const onSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    setLoading(true)
+    setLoading(true);
+
     try {
-      const auth = getAuth()
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
-
-      console.log(user)
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+        console.log('user created successfully!')
+      const user = userCredential.user;
 
       updateProfile(auth.currentUser, {
         displayName: name,
-      })
+      });
 
-      const formDataCopy = { ...formData }
-      delete formDataCopy.password
-      formDataCopy.timestamp = serverTimestamp()
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
 
-      console.log('User not sent to database yet.')
-      // await setDoc(doc(db, 'users', user.uid), formDataCopy)
-      console.log('user sent to database')
+      await setDoc(doc(db, 'users', user.uid), formDataCopy)
+      console.log('User sent to firestore')
       setLoading(false)
-      console.log('Loader set to false successfully!')
       navigate('/')
     } catch (error) {
-      console.log(error)
-      setLoading(false)
+      console.log(error);
+      setLoading(false);
     }
-  }
-
-  
+  };
 
   return (
     <Wrapper>
@@ -83,7 +83,7 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
             </h2>
           </div>
           <div className="content__right-body">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="username">
                 <span>Name</span>
                 <input
@@ -122,7 +122,9 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
                 <button disabled={loading}>
                   {loading === false ? (
                     <div>
-                      <span><span>Create Account</span> <AiOutlinePlus /></span>
+                      <span>
+                        <span>Create Account</span> <AiOutlinePlus />
+                      </span>
                     </div>
                   ) : (
                     <Loader />
