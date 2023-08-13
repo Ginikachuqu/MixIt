@@ -1,6 +1,8 @@
 // Essentials
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../../firebase.config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 // Components
 import OAuth from "../../components/OAuth/OAuth";
@@ -16,8 +18,46 @@ interface IAppProps {}
 const SignIn: React.FunctionComponent<IAppProps> = (props) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const usernameRef = useRef();
-  const passwordRef = useRef();
+  const [loggingIn, setLoggingIn] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const navigate = useNavigate();
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true)
+    setLoggingIn(true);
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      if (userCredential.user) {
+        navigate("/");
+        setLoading(false)
+        setLoggedIn(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false)
+      setLoggingIn(false);
+    }
+  };
 
   return (
     <Wrapper>
@@ -32,16 +72,16 @@ const SignIn: React.FunctionComponent<IAppProps> = (props) => {
             </h2>
           </div>
           <div className="content__right-body">
-            <form>
-              <div className="username">
-                <span>Username</span>
+            <form onSubmit={onSubmit}>
+              <div className= "email">
+                <span>Email</span>
                 <input
-                  type="text"
-                  name="username"
-                  id="username"
-                  placeholder="Enter username"
+                  type="email"
+                  name= "email"
+                  id= "email"
+                  placeholder="Enter email"
                   autoComplete="none"
-                  ref={usernameRef}
+                  onChange={onChange}
                 />
               </div>
               <div className="enter__password">
@@ -51,7 +91,7 @@ const SignIn: React.FunctionComponent<IAppProps> = (props) => {
                   name="password"
                   id="password"
                   placeholder="Enter password"
-                  ref={passwordRef}
+                  onChange={onChange}
                 />
               </div>
               <div className="submit">

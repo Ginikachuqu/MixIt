@@ -1,6 +1,7 @@
 // Essentials
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from '../../../firebase.config'
 
 // Styles
 import { Wrapper, TopSection, BottomSection } from "./UserProfile.styles";
@@ -19,6 +20,12 @@ import RecipeCard from "../recipeCreator/RecipeCreator";
 // }
 
 const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
+  const [user, setUser] = useState(null)
+
+  // Get Current User
+  useEffect(() => {
+    setUser(auth.currentUser)
+  }, [])
   return (
     <Wrapper>
       <div className="wrapper__inner">
@@ -33,14 +40,14 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
               </div>
               <div className="user__info">
                 <div className="user__name">
-                  <h3>Charles Grandison</h3>
+                  <h3>{user ? user.displayName : ''}</h3>
                   <div className="followers__count">
                     <Link className="followers">
-                      <span>3.5M</span>
+                      <span>{user ? user.followers : 0}</span>
                       <span>Followers</span>
                     </Link>
                     <Link className="following">
-                      <span>45</span>
+                      <span>{user ? user.following : 0}</span>
                       <span>Following</span>
                     </Link>
                   </div>

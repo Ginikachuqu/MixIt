@@ -54,7 +54,11 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
 
       updateProfile(auth.currentUser, {
         displayName: name,
+        followers: 0,
+        following: 0
       });
+
+      console.log(user)
 
       const formDataCopy = { ...formData };
       delete formDataCopy.password;
