@@ -28,7 +28,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/profile" element={<UserProfile />} />
-            <Route path="/create-recipe" element={<RecipeCreator />} />
+            <Route path="/create-recipe/:recipeid" element={<RecipeCreator />} />
           </Routes>
           <GlobalStyle />
         </Router>
