@@ -11,6 +11,7 @@ import RecipeCreator from "./pages/recipeCreator/RecipeCreator";
 
 // Components
 import NavBar from "./components/navbar/NavBar";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 // Context
 import AuthProvider from "./contexts/authcontext/AuthContext";
