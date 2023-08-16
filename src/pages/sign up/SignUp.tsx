@@ -53,9 +53,7 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, {
-        displayName: name,
-        followers: 0,
-        following: 0
+        displayName: name, 
       });
 
       console.log(user)

@@ -62,6 +62,20 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
                     tenetur saepe aut sit?
                   </p>
                 </div>
+                <div className="user__restrictions">
+                  <div className="header">
+                    <span>Your dietary restrictions and allergies</span>
+                  </div>
+                  <div className="body">
+                    <ul>
+                      <li>Lactose Intolerance</li>
+                      <li>Diabetic</li>
+                      <li>Kidney Disease</li>
+                      <li>Obesity</li>
+                      <span>+3 others</span>
+                    </ul>
+                  </div>
+                </div>
                 <div className="user__deet">
                   <div className="user__location">
                     <GrLocation />
@@ -82,7 +96,7 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
               </div>
             </div>
             <div className="edit__tools">
-              <Link to={{ pathname: "/" }}>
+              <Link to={{ pathname: "/edit-profile" }}>
                 <FaPen />
                 <span>Edit Profile</span>
               </Link>

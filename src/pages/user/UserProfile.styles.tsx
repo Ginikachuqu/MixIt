@@ -110,6 +110,46 @@ export const TopSection = styled.section`
           }
         }
 
+        .user__restrictions {
+          margin-bottom: .95rem;
+          max-width: 70%;
+          /* background-color: #000; */
+
+          .header {
+            margin-bottom: .25rem;
+
+            span {
+              font-size: .9rem;
+              font-style: italic;
+              color: var(--sand-brown);
+            }
+          }
+
+          .body {
+            ul {
+              display: flex;
+              flex-wrap: wrap;
+              gap: .5rem;
+
+              li {
+                list-style: none;
+                padding: .5rem 1.25rem;
+                background-color: var(--seal-brown);
+                color: var(--color-gray);
+                border-radius: 10rem;
+                font-size: .75rem;
+              }
+
+              span {
+                display: inline-block;
+                font-size: .9rem;
+                align-self: center;
+                font-style: italic;
+              }
+            }
+          }
+        }
+
         .user__deet {
             display: flex;
 
