@@ -1,5 +1,5 @@
 // Essentials
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // Styles
 import { Allergies, Restrictions, Wrapper } from "./EditProfile.styles";
@@ -7,10 +7,24 @@ import { Allergies, Restrictions, Wrapper } from "./EditProfile.styles";
 // Icons
 import { FaPen } from "react-icons/fa";
 import { AiOutlineClose, AiFillPlusCircle } from "react-icons/ai";
+
+// Context
+import { EditProfileContext } from "../../contexts/editprofile/EditProfile";
 // interface IAppProps {
 // }
 
 const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
+  const {
+    allergies,
+    restrictions,
+    addAllergy,
+    removeAllergy,
+    addRestriction,
+    removeRestriction,
+    handleInputChange,
+    allergyContent,
+  } = useContext(EditProfileContext);
+
   return (
     <Wrapper>
       <div className="content">
@@ -102,21 +116,25 @@ const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
                   <span>Allergies</span>
                 </div>
                 <div className="allergy__body">
-                  <div className="allergy__name">
-                    <p
-                      contentEditable
-                      suppressContentEditableWarning={true}
-                      data-placeholder="Lactose Intolerance"
-                    >
-                      {/* {step.name} */}
-                    </p>
-                  </div>
-                  <div className="remove__icon">
-                    {/* <AiOutlineClose onClick={() => removeStep(step.id)} /> */}
-                  </div>
+                  {allergies.map((allergy) => (
+                    <div className="allergy__item">
+                      <div className="allergy__name">
+                        <p
+                          contentEditable
+                          suppressContentEditableWarning={true}
+                          data-placeholder="Lactose Intolerance"
+                        >
+                          {allergy.name}
+                        </p>
+                      </div>
+                      <div className="remove__icon">
+                        <AiOutlineClose onClick={() => removeAllergy(allergy.id)} />
+                      </div>
+                    </div>
+                  ))}
 
                   <div className="controls">
-                    <button className="add__step">
+                    <button onClick={addAllergy} className="add__step">
                       <AiFillPlusCircle />
                       <span>Allergy</span>
                     </button>
@@ -130,21 +148,27 @@ const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
                   <span>Dietary Restrictions</span>
                 </div>
                 <div className="restriction__body">
-                  <div className="restriction__name">
-                    <p
-                      contentEditable
-                      suppressContentEditableWarning={true}
-                      data-placeholder="Diabetic"
-                    >
-                      {/* {restriction.name} */}
-                    </p>
-                  </div>
-                  <div className="remove__icon">
-                    {/* <AiOutlineClose onClick={() => removeStep(step.id)} /> */}
-                  </div>
+                  {restrictions.map((restriction) => (
+                    <div className="restriction__item">
+                      <div className="restriction__name">
+                        <p
+                          contentEditable
+                          suppressContentEditableWarning={true}
+                          data-placeholder="Diabetic"
+                        >
+                          {restriction.name}
+                        </p>
+                      </div>
+                      <div className="remove__icon">
+                        <AiOutlineClose
+                          onClick={() => removeRestriction(restriction.id)}
+                        />
+                      </div>
+                    </div>
+                  ))}
 
                   <div className="controls">
-                    <button className="add__step">
+                    <button onClick={addRestriction} className="add__step">
                       <AiFillPlusCircle />
                       <span>Restriction</span>
                     </button>

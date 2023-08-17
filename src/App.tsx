@@ -16,11 +16,13 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 // Context
 import AuthProvider from "./contexts/authcontext/AuthContext";
+import EditProfileProvider from "./contexts/editprofile/EditProfile";
 import RecipeProvider from "./contexts/createRecipeContent/RecipeContext";
 
 function App() {
   return (
     // <AuthProvider>
+    <EditProfileProvider>
       <RecipeProvider>
         <Router>
           <NavBar />
@@ -30,11 +32,12 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/create-recipe" element={<RecipeCreator />} />
-            <Route path='/edit-profile' element={<EditProfile />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
           </Routes>
           <GlobalStyle />
         </Router>
       </RecipeProvider>
+    </EditProfileProvider>
     // </AuthProvider>
   );
 }
