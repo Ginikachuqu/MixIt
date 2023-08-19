@@ -10,6 +10,7 @@ import { Wrapper, TopSection, BottomSection } from "./UserProfile.styles";
 // import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaPen, FaFacebook, } from "react-icons/fa";
 import { GrInstagram, GrLocation, GrTwitter } from "react-icons/gr";
+import { GiNotebook } from 'react-icons/gi'
 
 // Components
 import { recipes } from "../../Recipe";
@@ -124,6 +125,12 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
           </div>
         </BottomSection>
       </div>
+
+      {/* Create Recipe Button */}
+      <Link to={{pathname: '/create-recipe'}} className="create__recipe">
+        <GiNotebook />
+        <span>Create Recipe</span>
+      </Link>
     </Wrapper>
   );
 };

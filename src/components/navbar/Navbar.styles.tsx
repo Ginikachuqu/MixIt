@@ -12,11 +12,7 @@ export const Wrapper = styled.nav`
   z-index: 1099;
 
   .logo {
-    font-family: var(--secondary-font);
-    font-size: 1.25rem;
-    font-weight: bold;
     text-decoration: none;
-    color: var(--seal-brown);
   }
 
   .other__half {

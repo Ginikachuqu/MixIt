@@ -42,7 +42,10 @@ export const Wrapper = styled.section`
           align-items: center;
           justify-content: center;
           transition: 0.3s ease-in-out;
-          cursor: pointer;
+          
+          label {
+            cursor: pointer;
+          }
 
           &:hover {
             background-color: var(--hover-link);
@@ -66,45 +69,72 @@ export const Wrapper = styled.section`
         width: 100%;
         /* background: #000; */
         padding: 1rem;
-        display: flex;
-        /* align-items: center; */
-        /* justify-content: space-between; */
-        /* gap: 3rem; */
 
-        .edit__section {
-          &-left {
-            width: 50%;
-            div {
-              &:not(:last-of-type) {
-                margin-bottom: 0.85rem;
-              }
+        .form__fields {
+          display: flex;
 
-              span {
-                display: block;
-                font-size: 0.65rem;
-                text-transform: uppercase;
-                margin-bottom: 0.12rem;
-              }
+          .edit__section {
+            &-left {
+              width: 50%;
+              div {
+                &:not(:last-of-type) {
+                  margin-bottom: 0.85rem;
+                }
 
-              input {
-                padding: 0.45rem 0.45rem;
-                width: 300px;
-                background: none;
-                border: 1px solid var(--seal-brown);
-                border-radius: 0.25rem;
-                outline: none;
-                font-family: var(--primary-font);
+                span {
+                  display: block;
+                  font-size: 0.65rem;
+                  text-transform: uppercase;
+                  margin-bottom: 0.12rem;
+                }
 
-                &::placeholder {
+                input {
+                  padding: 0.45rem 0.45rem;
+                  width: 300px;
+                  background: none;
+                  border: 1px solid var(--seal-brown);
+                  border-radius: 0.25rem;
+                  outline: none;
                   font-family: var(--primary-font);
-                  font-size: 0.75rem;
+
+                  &::placeholder {
+                    font-family: var(--primary-font);
+                    font-size: 0.75rem;
+                  }
                 }
               }
             }
+
+            &-right {
+              width: 50%;
+            }
+          }
+        }
+
+        .publish__button {
+          font-size: 1.65rem;
+          padding: 0.25rem 1.75rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: transparent;
+          border: 1px solid var(--seal-brown);
+          outline: none;
+          border-radius: 3rem;
+          color: var(--seal-brown);
+          transition: 0.3s ease-in-out;
+          cursor: pointer;
+          font-family: var(--primary-font);
+          margin: 2rem auto;
+
+          &:hover {
+            background: var(--seal-brown);
+            color: var(--color-gray);
           }
 
-          &-right {
-            width: 50%;
+          span {
+            font-size: 0.95rem;
+            text-transform: uppercase;
           }
         }
       }

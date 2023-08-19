@@ -9,6 +9,7 @@ import SignIn from "./pages/sign in/SignIn";
 import UserProfile from "./pages/user/UserProfile";
 import RecipeCreator from "./pages/recipeCreator/RecipeCreator";
 import EditProfile from "./pages/edit profile/EditProfile";
+import NotFound from "./pages/not found/NotFound";
 
 // Components
 import NavBar from "./components/navbar/NavBar";
@@ -16,7 +17,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 // Context
 import AuthProvider from "./contexts/authcontext/AuthContext";
-import EditProfileProvider from "./contexts/editprofile/EditProfile";
+import EditProfileProvider from "./contexts/editprofile/EditProfileContext";
 import RecipeProvider from "./contexts/createRecipeContent/RecipeContext";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/create-recipe" element={<RecipeCreator />} />
             <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <GlobalStyle />
         </Router>

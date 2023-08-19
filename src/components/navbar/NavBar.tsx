@@ -10,6 +10,7 @@ import user__avatar from "../../../public/images/pexels-mo-eid-11798029.jpg";
 
 // Components
 import Sidebar from "../sidebar/Sidebar";
+import MarqueeLogo from "../marqueeLogo/MarqueeLogo";
 
 // Context
 import { SidebarContext } from "../../contexts/sidebarcontext/SidebarContext";
@@ -22,7 +23,9 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
   return (
     <>
       <Wrapper>
-        <Link to={{pathname: '/'}} className="logo">MixIt</Link>
+        <Link to={{pathname: '/'}} className="logo">
+          <MarqueeLogo />
+        </Link>
         <div className="other__half">
           <Link to={{pathname: '/profile'}} className="user__avatar-container">
             <img src={user__avatar} alt="user__avatar" />

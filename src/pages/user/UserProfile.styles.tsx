@@ -12,6 +12,44 @@ export const Wrapper = styled.section`
     margin: 0 auto;
   }
   /* background: #000; */
+
+  .create__recipe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .15rem;
+    padding: 1.5rem .75rem;
+    background-color: var(--seal-brown);
+    color: var(--color-gray);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 10%;
+    right: 18px;
+    text-decoration: none;
+    font-size: 2.95rem;
+    transition: 0.3s cubic-bezier(.21,.68,.63,.24);
+
+    span {
+      display: none;
+      font-size: 1.15rem;
+      transition: .3s ease-in-out;
+      transition-delay: 2s;
+    }
+    
+
+    &:hover {
+      width: 200px;
+      border-radius: 5rem;
+      font-size: 1.25rem;
+      background: var(--hover-link);
+
+      span {
+        display: inline-block;
+      }
+    }
+  }
 `;
 
 export const TopSection = styled.section`
