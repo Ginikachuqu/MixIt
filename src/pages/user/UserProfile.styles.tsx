@@ -29,7 +29,7 @@ export const Wrapper = styled.section`
     right: 18px;
     text-decoration: none;
     font-size: 2.95rem;
-    transition: 0.3s cubic-bezier(.21,.68,.63,.24);
+    transition: 0.3s ease-in-out;
 
     span {
       display: none;
@@ -47,6 +47,7 @@ export const Wrapper = styled.section`
 
       span {
         display: inline-block;
+        font-size: 1rem;
       }
     }
   }
