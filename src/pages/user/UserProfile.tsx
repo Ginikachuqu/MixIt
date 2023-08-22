@@ -129,7 +129,7 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
       {/* Create Recipe Button */}
       <Link to={{pathname: '/create-recipe'}} className="create__recipe">
         <GiNotebook />
-        <span>Create Recipe</span>
+        <span>Create New Recipe</span>
       </Link>
     </Wrapper>
   );

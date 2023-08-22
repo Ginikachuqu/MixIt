@@ -1,6 +1,7 @@
 // Essentials
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { v4 as uuid } from "uuid";
+import { gsap } from "gsap";
 
 export const EditProfileContext = createContext();
 
@@ -8,6 +9,25 @@ const EditProfileProvider = ({ children }) => {
   const [allergies, setAllergies] = useState([]);
   const [restrictions, setRestrictions] = useState([]);
   const [allergyContent, setAllergyContent] = useState("");
+  const [showItem, setShowItem] = useState(false);
+
+  const animateItem = (itemId) => {
+    // const newItemSelector = `.allergy__item[data-item-id="${itemId}"]`
+    setShowItem(true);
+    gsap
+      .from(itemId, {
+        yPercent: 20,
+        opacity: 0,
+        duration: .3,
+        ease: "Power3.out",
+      })
+      .to(itemId, {
+        yPercent: 0,
+        opacity: 1,
+        duration: .3,
+        ease: "Power3.out",
+      });
+  };
 
   const addAllergy = (e) => {
     e.preventDefault()
@@ -18,8 +38,8 @@ const EditProfileProvider = ({ children }) => {
     };
 
     setAllergies([...allergies, newAllergy]);
+    
     // setIngredients((prev) => [...prev, newIngredient]);
-    console.log(allergies);
     console.log("Allergy added!");
   };
 
@@ -57,6 +77,7 @@ const EditProfileProvider = ({ children }) => {
         allergies,
         restrictions,
         addAllergy,
+        showItem,
         removeAllergy,
         addRestriction,
         removeRestriction,

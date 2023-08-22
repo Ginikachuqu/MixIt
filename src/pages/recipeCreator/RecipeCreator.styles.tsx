@@ -18,7 +18,7 @@ export const Wrapper = styled.section`
         margin-bottom: 0.5rem;
         padding: 1.5rem 1rem;
         cursor: pointer;
-        /* border: 1px dashed var(--seal-brown); */
+        border: 1px dashed var(--seal-brown);
 
         .drop__text {
           display: flex;

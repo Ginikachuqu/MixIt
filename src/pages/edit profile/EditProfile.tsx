@@ -1,6 +1,7 @@
 // Essentials
 import { useState, useContext } from "react";
 
+
 // Styles
 import { Allergies, Restrictions, Wrapper } from "./EditProfile.styles";
 
@@ -19,6 +20,7 @@ const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
     allergies,
     restrictions,
     addAllergy,
+    showItem,
     removeAllergy,
     addRestriction,
     removeRestriction,
@@ -133,7 +135,7 @@ const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
                   </div>
                   <div className="allergy__body">
                     {allergies.map((allergy) => (
-                      <div className="allergy__item">
+                      (showItem && (<div className="allergy__item" data-item-id={allergy.id}>
                         <div className="allergy__name">
                           <p
                             contentEditable
@@ -148,7 +150,7 @@ const EditProfile: React.FunctionComponent<IAppProps> = (props) => {
                             onClick={() => removeAllergy(allergy.id)}
                           />
                         </div>
-                      </div>
+                      </div>))
                     ))}
 
                     <div className="controls">

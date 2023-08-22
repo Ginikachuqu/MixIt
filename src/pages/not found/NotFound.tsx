@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Video
 import notFoundVideo from "../../assets/video/404 Error.mp4";
@@ -16,6 +17,7 @@ const NotFound: React.FunctionComponent<IAppProps> = (props) => {
         <div className="video__container">
           <video src={notFoundVideo} muted autoPlay loop></video>
         </div>
+        <Link to={{ pathname: "/" }}>Back Home</Link>
       </div>
     </Wrapper>
   );

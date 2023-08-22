@@ -19,6 +19,7 @@ import { Wrapper, Title, Ingredient, Steps } from "./RecipeCreator.styles";
 // }
 
 const RecipeCreator: React.FunctionComponent<IRecipeCreatorProps> = (props) => {
+  const [files, setFiles] = useState([])
   const {
     ingredients,
     procedure,
@@ -31,10 +32,17 @@ const RecipeCreator: React.FunctionComponent<IRecipeCreatorProps> = (props) => {
   } = useContext(RecipeContext);
 
   const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles);
+    
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { acceptedFiles, getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/jpeg": [".jpg"],
+      "image/png": [".png"],
+    },
+    maxFiles: 1,
+  });
 
   return (
     <Wrapper>
