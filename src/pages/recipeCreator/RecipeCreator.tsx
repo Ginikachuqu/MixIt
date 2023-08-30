@@ -32,7 +32,7 @@ const RecipeCreator: React.FunctionComponent<IRecipeCreatorProps> = (props) => {
   } = useContext(RecipeContext);
 
   const onDrop = useCallback((acceptedFiles) => {
-    
+    console.log(acceptedFiles)
   }, []);
 
   const { acceptedFiles, getRootProps, getInputProps, isDragActive } = useDropzone({
