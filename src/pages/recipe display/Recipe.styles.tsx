@@ -156,6 +156,10 @@ export const Body = styled.section`
     .recipe__description {
       margin-bottom: 2rem;
 
+      .header {
+        margin-bottom: .5rem;
+      }
+
       p {
         text-align: justify;
         font-size: 1.15rem;
