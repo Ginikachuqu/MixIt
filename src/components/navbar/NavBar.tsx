@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Wrapper } from "./Navbar.styles";
 
 // User Avatar
-import user__avatar from "../../../public/images/pexels-mo-eid-11798029.jpg";
+import user__avatar from "../../../public/images/8825333.jpg";
 
 // Components
 import Sidebar from "../sidebar/Sidebar";

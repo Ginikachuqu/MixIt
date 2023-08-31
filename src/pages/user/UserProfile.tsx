@@ -61,7 +61,7 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
             <div className="user">
               <div className="user__avatar">
                 <img
-                  src="../../../public/images/pexels-mo-eid-11798029.jpg"
+                  src="../../../public/images/8825333.jpg"
                   alt="user avatar"
                 />
               </div>
