@@ -1,7 +1,7 @@
 // Essentials
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from '../../../firebase.config'
+import { auth } from "../../../firebase.config";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase.config";
 
@@ -10,9 +10,9 @@ import { Wrapper, TopSection, BottomSection } from "./UserProfile.styles";
 
 // Icons
 // import { AiFillTwitterCircle } from "react-icons/ai";
-import { FaPen, FaFacebook, } from "react-icons/fa";
+import { FaPen, FaFacebook } from "react-icons/fa";
 import { GrInstagram, GrLocation, GrTwitter } from "react-icons/gr";
-import { GiNotebook } from 'react-icons/gi'
+import { GiNotebook } from "react-icons/gi";
 
 // Components
 import { recipes } from "../../Recipe";
@@ -23,35 +23,38 @@ import RecipeCard from "../recipeCreator/RecipeCreator";
 // }
 
 const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
-  const [user, setUser] = useState(null)
-  const [userDetails, setUserDetails] = useState(null)
+  const [user, setUser] = useState(null);
+  const [userDetails, setUserDetails] = useState(null);
 
   // Get Current User
   useEffect(() => {
-    setUser(auth.currentUser)
-  }, [])
+    setUser(auth.currentUser);
+  }, []);
 
-  console.log(user)
-
-  const fetchUserDetails = async () => {
-    const docRef = doc(db, 'users', user.uid)
-    const docSnap = await getDoc(docRef)
-
-    try {
-      if (docSnap.exists()) {
-        setUserDetails(docSnap.data())
-        console.log(userDetails)
-      } else {
-        console.log('No such document')
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-  
   useEffect(() => {
-    fetchUserDetails()
-  }, [user])
+    const fetchUserDetails = async () => {
+      try {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setUserDetails(docSnap.data());
+          console.log(userDetails);
+        } else {
+          console.log("No such document");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (user) {
+      fetchUserDetails();
+    }
+  }, [user]);
+
+  console.log(user);
+
+  console.log(userDetails);
 
   return (
     <Wrapper>
@@ -67,14 +70,14 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
               </div>
               <div className="user__info">
                 <div className="user__name">
-                  <h3>{user ? user.displayName : ''}</h3>
+                  <h3>{user ? user.displayName : ""}</h3>
                   <div className="followers__count">
                     <Link className="followers">
-                      <span>{user ? userDetails.followers : 0}</span>
+                      <span>{userDetails ? userDetails.followers : 0}</span>
                       <span>Followers</span>
                     </Link>
                     <Link className="following">
-                      <span>{user ? userDetails.following : 0}</span>
+                      <span>{userDetails ? userDetails.following : 0}</span>
                       <span>Following</span>
                     </Link>
                   </div>
@@ -153,7 +156,7 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
       </div>
 
       {/* Create Recipe Button */}
-      <Link to={{pathname: '/create-recipe'}} className="create__recipe">
+      <Link to={{ pathname: "/create-recipe" }} className="create__recipe">
         <GiNotebook />
         <span>Create New Recipe</span>
       </Link>
