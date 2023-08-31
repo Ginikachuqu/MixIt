@@ -60,7 +60,12 @@ const SignUp: React.FunctionComponent<IAppProps> = (props) => {
 
       const formDataCopy = { ...formData };
       delete formDataCopy.password;
+      formDataCopy.followers = 0
+      formDataCopy.following = 0
+      formDataCopy.profileImageURL = ''
       formDataCopy.timestamp = serverTimestamp();
+
+      console.log(formDataCopy)
 
       await setDoc(doc(db, 'users', user.uid), formDataCopy)
       console.log('User sent to firestore')

@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from '../../../firebase.config'
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase.config";
 
 // Styles
 import { Wrapper, TopSection, BottomSection } from "./UserProfile.styles";
@@ -22,11 +24,35 @@ import RecipeCard from "../recipeCreator/RecipeCreator";
 
 const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
   const [user, setUser] = useState(null)
+  const [userDetails, setUserDetails] = useState(null)
 
   // Get Current User
   useEffect(() => {
     setUser(auth.currentUser)
   }, [])
+
+  console.log(user)
+
+  const fetchUserDetails = async () => {
+    const docRef = doc(db, 'users', user.uid)
+    const docSnap = await getDoc(docRef)
+
+    try {
+      if (docSnap.exists()) {
+        setUserDetails(docSnap.data())
+        console.log(userDetails)
+      } else {
+        console.log('No such document')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  useEffect(() => {
+    fetchUserDetails()
+  }, [user])
+
   return (
     <Wrapper>
       <div className="wrapper__inner">
@@ -44,11 +70,11 @@ const UserProfile: React.FunctionComponent<IAppProps> = (props) => {
                   <h3>{user ? user.displayName : ''}</h3>
                   <div className="followers__count">
                     <Link className="followers">
-                      <span>{user ? user.followers : 0}</span>
+                      <span>{user ? userDetails.followers : 0}</span>
                       <span>Followers</span>
                     </Link>
                     <Link className="following">
-                      <span>{user ? user.following : 0}</span>
+                      <span>{user ? userDetails.following : 0}</span>
                       <span>Following</span>
                     </Link>
                   </div>
