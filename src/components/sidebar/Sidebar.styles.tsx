@@ -88,6 +88,29 @@ export const Links = styled.nav`
     }
   }
 
+  button.logout {
+    padding: 0.55rem 2rem;
+    border-radius: 4rem;
+    border: 1px solid var(--seal-brown);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    color: var(--seal-brown);
+    outline: none;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      margin-top: -2px;
+      /* .arrow {
+        color: var(--color-gray);
+        transform: translateX(0);
+      } */
+    }
+  }
+
   .cta {
     padding: 0.15rem 2rem;
     border-radius: 4rem;

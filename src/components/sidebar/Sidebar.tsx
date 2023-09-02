@@ -1,9 +1,11 @@
 // interface IAppProps {
 // }
 // Essentials
-import { useContext, useLayoutEffect, useRef } from "react";
+import { useState, useContext, useLayoutEffect, useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../../firebase.config";
 
 // Icons
 import {
@@ -21,8 +23,31 @@ import { FaFacebook } from "react-icons/fa";
 
 const Sidebar: React.FunctionComponent<IAppProps> = (props) => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
+  const [user, setUser] = useState(auth.currentUser)
 
-  const tl = useRef()
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(auth.currentUser)
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
+
+  const navigate = useNavigate()
+
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut()
+      setUser(null)
+      navigate('/')
+    } catch (error) {
+      console.log('Error logging out:', error)
+    }
+  }
+
+  const tl = useRef();
 
   // useLayoutEffect(() => {
 
@@ -72,12 +97,20 @@ const Sidebar: React.FunctionComponent<IAppProps> = (props) => {
             </span>
           </div>
         </div>
-        <Link to={{pathname: '/signup'}} onClick={() => setIsOpen(false)} className="cta">
-          <span>Sign In</span>
-          <span className="arrow">
-            <GrLinkNext />
-          </span>
-        </Link>
+        {user !== null ? (
+          <button className='logout' onClick={handleSignOut}>Logout</button>
+        ) : (
+          <Link
+            to={{ pathname: "/signup" }}
+            onClick={() => setIsOpen(false)}
+            className="cta"
+          >
+            <span>Sign In</span>
+            <span className="arrow">
+              <GrLinkNext />
+            </span>
+          </Link>
+        )}
       </Links>
     </Wrapper>
   );

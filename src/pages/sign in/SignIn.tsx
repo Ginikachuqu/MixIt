@@ -50,7 +50,7 @@ const SignIn: React.FunctionComponent<IAppProps> = (props) => {
       if (userCredential.user) {
         navigate("/");
         setLoading(false)
-        setLoggedIn(false);
+        setLoggingIn(false);
       }
     } catch (error) {
       console.log(error);
